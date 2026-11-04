@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#eaf7ef">
+<title>BarrigAI — Cuide da sua rotina intestinal</title>
+<style>
+:root{--green:#247b55;--deep:#174d38;--mint:#eaf7ef;--cream:#fbfaf5;--ink:#20352b;--muted:#63766b;--line:#d8e8dd;--white:#fff;--gold:#f4c96b}
+*{box-sizing:border-box}
+body{margin:0;background:var(--cream);color:var(--ink);font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.55}
+header{background:linear-gradient(130deg,#eaf7ef,#f5f8e9);padding:22px 20px 62px}
+nav{max-width:1050px;margin:auto;display:flex;justify-content:space-between;align-items:center}
+.brand{font-size:1.35rem;font-weight:850;color:var(--deep);letter-spacing:-.04em}
+.brand span{color:var(--green)}
+nav a{color:var(--deep);text-decoration:none;font-weight:650;font-size:.93rem;margin-left:20px}
+.hero{max-width:1050px;margin:65px auto 0;display:grid;grid-template-columns:1.15fr .85fr;gap:38px;align-items:center}
+.tag{display:inline-block;background:#d8efdf;color:var(--deep);padding:7px 12px;border-radius:99px;font-size:.82rem;font-weight:750}
+h1{font-size:clamp(2.5rem,6vw,4.5rem);line-height:1.02;letter-spacing:-.065em;margin:18px 0}
+h1 em{font-style:normal;color:var(--green)}
+.hero p{font-size:1.12rem;color:#53695c;max-width:570px}
+.hero-art{min-height:270px;border-radius:32px;background:linear-gradient(145deg,#ccebd6,#eff5ce);display:grid;place-items:center;position:relative;overflow:hidden}
+.belly{width:190px;height:190px;border-radius:48% 52% 46% 54%;background:#f3c9a7;border:8px solid #fff8;display:grid;place-items:center;font-size:5.5rem;box-shadow:0 20px 35px #527d5b25;transform:rotate(-7deg)}
+.spark{position:absolute;color:#478d62;font-size:2rem}.s1{top:35px;left:48px}.s2{right:45px;top:65px}.s3{bottom:32px;left:65px}
+main{max-width:1050px;margin:-25px auto 60px;padding:0 20px;position:relative}
+.card{background:var(--white);border:1px solid var(--line);border-radius:22px;padding:25px;box-shadow:0 12px 35px #214d3210}
+.section-title{font-size:1.6rem;letter-spacing:-.04em;margin:0 0 7px}
+.muted{color:var(--muted)}
+.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.tips{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:18px 0 32px}
+.tip{background:#f3f8f1;border:1px solid var(--line);border-radius:17px;padding:18px}
+.tip .emoji{font-size:1.7rem}
+.tip h3{margin:8px 0 5px;font-size:1rem}
+.tip p{margin:0;color:var(--muted);font-size:.9rem}
+label{display:block;font-weight:700;margin:15px 0 7px}
+input,select,textarea{width:100%;border:1px solid #cbded0;border-radius:12px;padding:12px 13px;font:inherit;background:#fff;color:var(--ink)}
+textarea{min-height:90px;resize:vertical}
+button{border:0;border-radius:12px;padding:13px 17px;background:var(--green);color:white;font:inherit;font-weight:750;cursor:pointer}
+button:hover{background:var(--deep)}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #9acbaa;outline-offset:2px}
+.form-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:17px}
+button.alt{background:#eaf4ec;color:var(--deep)}
+.response{margin-top:17px;padding:16px;border-radius:14px;background:#f0f7f1;border:1px solid var(--line);display:none}
+.response h3{margin:0 0 8px}
+.response ul{margin:8px 0 0;padding-left:20px}
+.chatbox{display:flex;flex-direction:column;gap:12px}
+.chat-log{min-height:190px;max-height:310px;overflow:auto;background:#f6faf6;border:1px solid var(--line);border-radius:14px;padding:13px}
+.msg{padding:10px 12px;border-radius:13px;margin:7px 0;max-width:92%;white-space:pre-wrap}
+.bot{background:#e5f3e8;color:var(--deep);margin-right:auto}
+.user{background:#247b55;color:white;margin-left:auto}
+.chat-entry{display:flex;gap:8px}.chat-entry input{flex:1;min-width:0}
+.notice{background:#fff7e5;border:1px solid #f0dfb6;border-radius:16px;padding:17px;margin-top:20px;color:#68552b;font-size:.92rem}
+.notice strong{color:#4c3c1d}
+.checklist{list-style:none;padding:0;margin:12px 0 0}
+.checklist li{padding:9px 0;border-bottom:1px solid #edf2ed}
+.checklist input{width:auto;margin-right:8px;accent-color:var(--green)}
+footer{text-align:center;color:var(--muted);padding:25px 18px 40px;font-size:.85rem}
+@media(max-width:760px){.hero{grid-template-columns:1fr;margin-top:42px}.hero-art{min-height:210px}.belly{width:150px;height:150px;font-size:4rem}.tips{grid-template-columns:1fr}.grid{grid-template-columns:1fr}nav a{margin-left:10px;font-size:.8rem}}
+</style>
+</head>
+<body>
+<header>
+<nav>
+  <div class="brand">🌿 Barrig<span>AI</span></div>
+  <div><a href="#dicas">Dicas</a><a href="#assistente">Assistente</a></div>
+</nav>
+<section class="hero">
+  <div>
+    <span class="tag">BEM-ESTAR INTESTINAL, SEM COMPLICAÇÃO</span>
+    <h1>Seu intestino merece uma rotina <em>tranquila.</em></h1>
+    <p>Pequenos hábitos podem ajudar seu intestino a funcionar melhor. A BarrigAI reúne orientações gerais e ajuda você a organizar uma rotina saudável.</p>
+    <a href="#assistente"><button type="button">Conversar com a BarrigAI ↓</button></a>
+  </div>
+  <div class="hero-art" aria-label="Ilustração de uma barriga feliz">
+    <span class="spark s1">✳</span><span class="spark s2">✦</span><span class="spark s3">✿</span>
+    <div class="belly">😊</div>
+  </div>
+</section>
+</header>
+<main>
+<section id="dicas">
+  <h2 class="section-title">Hábitos que podem ajudar</h2>
+  <p class="muted">O básico bem feito costuma ser um bom começo. Vá no seu ritmo.</p>
+  <div class="tips">
+    <article class="tip"><div class="emoji">💧</div><h3>Beba água ao longo do dia</h3><p>Tenha água por perto e beba regularmente. As necessidades variam conforme idade, clima e atividade.</p></article>
+    <article class="tip"><div class="emoji">🥝</div><h3>Inclua fibras nas refeições</h3><p>Frutas, verduras, feijão, aveia e cereais integrais ajudam a compor uma alimentação variada. Aumente fibras gradualmente.</p></article>
+    <article class="tip"><div class="emoji">🚶</div><h3>Movimente o corpo</h3><p>Caminhadas, brincadeiras, esportes e outras atividades agradáveis podem favorecer o funcionamento intestinal.</p></article>
+    <article class="tip"><div class="emoji">🕒</div><h3>Crie um horário tranquilo</h3><p>Reserve um momento sem pressa, por exemplo depois de uma refeição. Não ignore a vontade de ir ao banheiro.</p></article>
+    <article class="tip"><div class="emoji">🪑</div><h3>Encontre uma posição confortável</h3><p>Apoiar os pés em um banquinho baixo pode deixar a posição no vaso mais confortável. Evite fazer força excessiva.</p></article>
+    <article class="tip"><div class="emoji">😴</div><h3>Cuide do sono e da rotina</h3><p>Horários regulares para dormir, acordar e comer ajudam a manter hábitos consistentes.</p></article>
+  </div>
+</section>
+<div class="grid">
+<section class="card">
+  <h2 class="section-title">Monte sua rotina</h2>
+  <p class="muted">Marque hábitos que você gostaria de praticar hoje.</p>
+  <ul class="checklist">
+    <li><label><input type="checkbox"> Beber água regularmente</label></li>
+    <li><label><input type="checkbox"> Comer uma fruta ou vegetal</label></li>
+    <li><label><input type="checkbox"> Incluir uma fonte de fibras</label></li>
+    <li><label><input type="checkbox"> Fazer algum movimento de que gosto</label></li>
+    <li><label><input type="checkbox"> Reservar um momento sem pressa para ir ao banheiro</label></li>
+  </ul>
+  <p class="muted" style="font-size:.83rem">Esta lista é apenas um lembrete flexível — não precisa cumprir tudo perfeitamente.</p>
+</section>
+<section class="card">
+  <h2 class="section-title">Como está sua rotina?</h2>
+  <p class="muted">Use estas perguntas para organizar o que contar a um profissional de saúde, se precisar.</p>
+  <label for="frequency">Com que frequência você costuma evacuar?</label>
+  <select id="frequency"><option value="">Selecione</option><option>Todos ou quase todos os dias</option><option>Algumas vezes por semana</option><option>Menos de três vezes por semana</option><option>Varia bastante</option></select>
+  <label for="duration">Há quanto tempo isso incomoda?</label>
+  <select id="duration"><option value="">Selecione</option><option>Começou há poucos dias</option><option>Há algumas semanas</option><option>Há meses ou mais</option><option>Não tenho certeza</option></select>
+  <label for="symptoms">O que você percebe? (opcional)</label>
+  <textarea id="symptoms" placeholder="Ex.: fezes ressecadas, desconforto, esforço..."></textarea>
+  <div class="form-actions"><button id="summary" type="button">Organizar minhas respostas</button></div>
+  <div class="response" id="summaryOut" aria-live="polite"></div>
+</section>
+</div>
+<section class="card" id="assistente" style="margin-top:18px">
+  <h2 class="section-title">💬 Converse com a BarrigAI</h2>
+  <p class="muted">Um guia educativo para dúvidas comuns sobre hábitos intestinais. Não substitui um médico ou nutricionista.</p>
+  <div class="chatbox">
+    <div class="chat-log" id="chatLog" aria-live="polite"><div class="msg bot">Oi! Eu sou a BarrigAI 🌿 Posso compartilhar orientações gerais para uma rotina intestinal saudável. O que você gostaria de saber?</div></div>
+    <form class="chat-entry" id="chatForm">
+      <input id="chatInput" maxlength="500" placeholder="Ex.: Quais alimentos têm fibras?" aria-label="Sua pergunta">
+      <button type="submit">Enviar</button>
+    </form>
+  </div>
+  <div class="notice"><strong>Importante:</strong> esta versão funciona com respostas educativas predefinidas, não com um modelo de IA conectado. Não use laxantes, chás “detox” ou medicamentos por conta própria. Se a dificuldade persistir, converse com um responsável e procure orientação de um profissional de saúde. Procure atendimento rapidamente se houver dor abdominal forte, vômitos repetidos, sangue nas fezes, febre ou barriga muito inchada.</div>
+</section>
+</main>
+<footer>© BarrigAI · Informação educativa para apoiar hábitos saudáveis.<br>Este site não faz diagnósticos nem substitui atendimento profissional.</footer>
+<script>
+(function(){
+ const log=document.getElementById('chatLog');
+ function add(text,who){const d=document.createElement('div');d.className='msg '+who;d.textContent=text;log.appendChild(d);log.scrollTop=log.scrollHeight;}
+ function reply(q){
+  const t=q.toLowerCase();
+  if(/sangue|vomit|febre|dor forte|muito inchad/.test(t)) return 'Esses sinais precisam de avaliação médica. Conte a um responsável agora e procure atendimento de saúde, especialmente se os sintomas forem intensos ou estiverem piorando.';
+  if(/laxante|rem[eé]dio|medicamento|ch[aá] detox/.test(t)) return 'Não é seguro escolher laxantes, remédios ou chás para soltar o intestino sem orientação profissional. Converse com um responsável e um profissional de saúde antes de usar qualquer produto.';
+  if(/fibra|alimento|comer|fruta|verdura|aveia|feij/.test(t)) return 'Boas fontes de fibras incluem feijão, lentilha, frutas, verduras, legumes, aveia e cereais integrais. Tente variar os alimentos e aumentar as fibras aos poucos, junto com água ao longo do dia.';
+  if(/agua|hidrata/.test(t)) return 'Beber água regularmente ajuda a manter as fezes macias. Deixe uma garrafinha por perto e distribua a ingestão ao longo do dia. A quantidade ideal varia de pessoa para pessoa.';
+  if(/hor[aá]rio|rotina|banheiro|vaso|for[cç]a|evacua/.test(t)) return 'Uma ideia é reservar um momento tranquilo, muitas vezes depois de uma refeição, e não adiar quando sentir vontade. Evite ficar muito tempo no vaso ou fazer força excessiva. Apoiar os pés em um banquinho baixo pode ajudar no conforto.';
+  if(/exerc[ií]cio|atividade|caminh|moviment/.test(t)) return 'Movimentos regulares e agradáveis — como caminhar, dançar, pedalar ou praticar um esporte — podem ajudar o funcionamento intestinal. Comece de forma confortável para você.';
+  if(/tempo|seman|dias|constipa|pris[aã]o/.test(t)) return 'A frequência intestinal varia entre pessoas. Se você está evacuando menos que o habitual, sente dor, faz muito esforço ou isso persiste, conte a um responsável e converse com um profissional de saúde.';
+  return 'Posso ajudar com informações gerais sobre água, fibras, movimento e criação de uma rotina tranquila para ir ao banheiro. Se você está com sintomas persistentes ou preocupantes, converse com um responsável e procure um profissional de saúde.';
+ }
+ document.getElementById('chatForm').addEventListener('submit',function(e){
+  e.preventDefault();const input=document.getElementById('chatInput');const q=input.value.trim();if(!q)return;
+  add(q,'user');add(reply(q),'bot');input.value='';input.focus();
+ });
+ document.getElementById('summary').addEventListener('click',function(){
+  const f=document.getElementById('frequency').value||'Não informado';
+  const d=document.getElementById('duration').value||'Não informado';
+  const s=document.getElementById('symptoms').value.trim()||'Não informado';
+  const out=document.getElementById('summaryOut');
+  out.style.display='block';out.innerHTML='';
+  const h=document.createElement('h3');h.textContent='Resumo para conversar com um profissional';
+  const ul=document.createElement('ul');
+  [['Frequência',f],['Duração',d],['O que percebe',s]].forEach(function(pair){const li=document.createElement('li');li.textContent=pair[0]+': '+pair[1];ul.appendChild(li);});
+  out.appendChild(h);out.appendChild(ul);
+  const p=document.createElement('p');p.textContent='Você pode usar este resumo para explicar como está se sentindo a um responsável ou profissional de saúde.';out.appendChild(p);
+ });
+})();
+</script>
+</body>
+</html>
